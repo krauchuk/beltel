@@ -1,0 +1,51 @@
+form {
+    border: 3px solid #f1f1f1;
+    font-family: Arial;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.container {
+    padding: 16px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.center-text {
+    text-align: center;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.vertical-center {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    left: 0;
+}
+
+.error-text {
+    color: red;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 4px;
+}

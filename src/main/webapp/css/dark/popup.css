@@ -1,0 +1,17 @@
+.popup{
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+.popup-content{
+    border: 1px solid #3C3F41;
+    background: #2b2b2b;
+    position: fixed;
+    max-height: 100%;
+    overflow: auto;
+    top: 5%;
+    left: 40%;
+}

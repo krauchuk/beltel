@@ -1,0 +1,122 @@
+body{
+    font-family: Arial;
+    background: #3C3F41;
+    color: #BABABA;
+}
+ul {
+    padding: 0;
+    background: #2B2B2B;
+    border: 1px solid #2B2B2B;
+    font-family: Arial;
+}
+
+li {
+    display: inline-block;
+}
+
+a {
+    border-radius: 4px;
+    padding: 8px;
+    display: inline-block;
+    color: white;
+    background: #92C157;
+    text-decoration: none;
+}
+
+a:hover {
+    background: white;
+    text-decoration: none;
+    color: #92C157;
+}
+
+.username {
+    color: #BABABA;
+    display: inline-block;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.li-left {
+    position: absolute;
+    right: 9px;
+}
+.li-del{
+    position: absolute;
+    right: 9px;
+}
+.li-accept{
+    position: absolute;
+    left: 9px;
+}
+.li-edit{
+    position: absolute;
+    left: 100px;
+}
+
+
+.view-btn{
+    background: #313335;
+}
+.view-btn:hover{
+    background: white;
+    color: #313335;
+}
+.delete-btn{
+    background: #e85b47;
+    text-align: right;
+}
+.delete-btn:hover{
+    background: white;
+    color: #e85b47;
+}
+.accept-btn{
+    background: #92C157;
+}
+.accept-btn:hover{
+    background: white;
+    color: #92C157;
+}
+.unaccept-btn{
+    background: #CC7832;
+}
+.unaccept-btn:hover{
+    background: white;
+    color: #CC7832;
+}
+.edit-btn{
+    background: #3c3f41;
+}
+.edit-btn:hover{
+    background: white;
+    color: #3c3f41;
+}
+
+.li-text{
+    display: inline-block;
+    padding: 8px;
+}
+.ul-req {
+    padding: 0;
+    background: #f1f1f1;
+    font-family: Arial;
+}
+button{
+    color: white;
+    background: #92C157;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 4px;
+}
+button:hover{
+    background: white;
+    color: #92C157;
+}
+.close-btn{
+    background: #e85b47;
+    cursor: pointer;
+}
+.close-btn:hover{
+    background: white;
+    color: #e85b47;
+}
