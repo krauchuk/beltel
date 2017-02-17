@@ -53,10 +53,13 @@
                     </c:when>
                     <c:when test="${dataType == 'sector'}">
                         <tr>
-                            <td><form:label path="division_id.id">Отдел</form:label></td>
+                            <td>
+                                <form:label path="division_id.id">Отдел</form:label>
+                                <span class="required-fild">*</span>
+                            </td>
                             <td>
                                 <form:select path="division_id.id">
-                                    <form:option value="0">---</form:option>
+                                    <option disabled selected hidden></option>
                                     <c:forEach var="division" items="${division}">
                                         <form:option value="${division.id}">${division.name}</form:option>
                                     </c:forEach>
@@ -103,7 +106,10 @@
                     <td><form:input maxlength="40" path="middlename"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="telJob">Телефон</form:label></td>
+                    <td>
+                        <form:label path="telJob">Телефон</form:label>
+                        <span class="required-fild">*</span>
+                    </td>
                     <td><form:input maxlength="15" path="telJob"/></td>
                 </tr>
                 <tr>
@@ -117,7 +123,7 @@
                     </td>
                     <td>
                         <form:select path="post_id.id">
-                            <form:option value="0">---</form:option>
+                            <option disabled selected hidden></option>
                             <c:forEach var="post" items="${post}">
                                 <form:option value="${post.id}">${post.name}</form:option>
                             </c:forEach>
@@ -131,7 +137,7 @@
                     </td>
                     <td>
                         <form:select path="zues_id.id">
-                            <form:option value="0">---</form:option>
+                            <option disabled selected hidden></option>
                             <c:forEach var="zues" items="${zues}">
                                 <form:option value="${zues.id}">${zues.name}</form:option>
                             </c:forEach>
@@ -145,7 +151,7 @@
                     </td>
                     <td>
                         <form:select path="sector_id.id">
-                            <form:option value="0">---</form:option>
+                            <<option disabled selected hidden></option>
                             <c:forEach var="sector" items="${sector}">
                                 <form:option value="${sector.id}">${sector.name}</form:option>
                             </c:forEach>
@@ -178,7 +184,7 @@
                             </td>
                             <td>
                                 <form:select path="resource_id.id">
-                                    <form:option value="0">---</form:option>
+                                    <option disabled selected hidden></option>
                                     <c:forEach var="resource" items="${resource}">
                                         <form:option value="${resource.id}">${resource.name}</form:option>
                                     </c:forEach>
@@ -194,7 +200,7 @@
                             </td>
                             <td>
                                 <form:select path="region_id.id">
-                                    <form:option value="0">---</form:option>
+                                    <option disabled selected hidden></option>
                                     <c:forEach var="region" items="${region}">
                                         <form:option value="${region.id}">${region.name}</form:option>
                                     </c:forEach>
