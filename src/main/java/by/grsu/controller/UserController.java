@@ -88,15 +88,15 @@ public class UserController {
         reportingNotice.setDateSet(date);
         reportingNoticeService.save(reportingNotice);
         for(int i = 0; i < data.getRepnotes().size(); i++){
-            RepnoteRes rr = new RepnoteRes();
-            rr.setReportingNotice_id(reportingNotice);
-            rr.setRegimeAccess_id(
+            RepnoteRes repnoteRes = new RepnoteRes();
+            repnoteRes.setReportingNotice_id(reportingNotice);
+            repnoteRes.setRegimeAccess_id(
                     regimeAccessService.getById(data.getRepnotes().get(i).getRegimeAccess_id().getId())
             );
-            rr.setSubResource_id(
+            repnoteRes.setSubResource_id(
                     subResourceService.getById(data.getRepnotes().get(i).getSubResource_id().getId())
             );
-            repnoteResService.save(rr);
+            repnoteResService.save(repnoteRes);
         }
         return "redirect:/create_notice";
     }

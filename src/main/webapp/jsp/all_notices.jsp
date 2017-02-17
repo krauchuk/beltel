@@ -17,46 +17,43 @@
 <p style="text-align:center">Список всех заявок из БД</p>
 <table id="notice_table">
     <thead>
-        <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Пользователь</th>
-            <th>Должность</th>
-            <th>Отдел</th>
-            <th>Ресурсы</th>
-            <th>Время подачи</th>
-            <th>Статус</th>
-            <th></th>
-        </tr>
+    <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Пользователь</th>
+        <th>Должность</th>
+        <th>Отдел</th>
+        <th>Время подачи</th>
+        <th>Статус</th>
+        <th></th>
+    </tr>
     </thead>
-    <tbody>
-        <c:if test="${not empty reportingNotice}">
-            <c:forEach var="notice" items="${reportingNotice}">
-                <tr>
-                    <td><a class="view-btn" href="notice/${notice.id}">Подробнее</a></td>
-                    <td>${notice.id}</td>
-                    <td>${notice.employers_id.fio}</td>
-                    <td>${notice.employers_id.post_id.name}</td>
-                    <td>${notice.employers_id.sector_id.division_id.name}</td>
-                    <td>Русурсы</td>
-                    <td>${notice.dateSet}</td>
-                    <c:if test="${notice.status == true}">
-                        <td>
-                            <span class="notice-status-true">&#10004;</span>
-                        </td>
-                    </c:if>
-                    <c:if test="${notice.status == false}">
-                        <td>
-                            <span class="notice-status-false">&#10006;</span>
-                        </td>
-                    </c:if>
-                    <td><a class="delete-btn" href="${path}/delete/${notice.id}">Удалить</a></td>
-                </tr>
-            </c:forEach>
-        </c:if>
+    <tbody id="table-body">
+    <c:if test="${not empty reportingNotice}">
+        <c:forEach var="notice" items="${reportingNotice}">
+            <tr>
+                <td><a class="view-btn" href="notice/${notice.id}">Подробнее</a></td>
+                <td>${notice.id}</td>
+                <td>${notice.employers_id.fio}</td>
+                <td>${notice.employers_id.post_id.name}</td>
+                <td>${notice.employers_id.sector_id.division_id.name}</td>
+                <td>${notice.dateSet}</td>
+                <c:if test="${notice.status == true}">
+                    <td>
+                        <span class="notice-status-true">&#10004;</span>
+                    </td>
+                </c:if>
+                <c:if test="${notice.status == false}">
+                    <td>
+                        <span class="notice-status-false">&#10006;</span>
+                    </td>
+                </c:if>
+                <td><a class="delete-btn" href="${path}/delete/${notice.id}">Удалить</a></td>
+            </tr>
+        </c:forEach>
+    </c:if>
     </tbody>
 </table>
-
 <script>
     $(function () {
         $("#notice_table").dataTable({
@@ -82,7 +79,7 @@
                     "sortDescending": ": активировать для сортировки столбца по убыванию"
                 }
             },
-            stateSave: true,
+            stateSave: true
         });
     })
 </script>

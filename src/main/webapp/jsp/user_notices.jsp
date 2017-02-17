@@ -75,7 +75,7 @@
                     "sortDescending": ": активировать для сортировки столбца по убыванию"
                 }
             },
-            stateSave: true,
+            stateSave: true
         });
     })
 </script>

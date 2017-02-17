@@ -1,9 +1,7 @@
 package by.grsu.config;
 
-import javafx.scene.chart.PieChart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -29,9 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/", "/index", "/notice/**").access("hasRole('ADMIN') or hasRole('USER')")
-                .antMatchers("/admin/**", "/all_notices", "/new_notices", "/edit_db", "/change_status/**").access("hasRole('ADMIN')")
-                .antMatchers("/user/**", "/user_notices", "/create_notice").access("hasRole('USER')").and().formLogin()
+                .antMatchers("/admin/**", "/all_notices", "/new_notices", "/edit_db", "/change_status/**", "/delete/**").access("hasRole('ADMIN')")
+                .antMatchers("/user/**", "/user_notices", "/create_notice").access("hasRole('USER')")
+                .and().formLogin()
                 .loginPage("/login_page").loginProcessingUrl("/login").usernameParameter("username")
-                .passwordParameter("password").and().logout().permitAll();
+                .passwordParameter("password").and().logout().permitAll()
+                .and().exceptionHandling().accessDeniedPage("/403")
+                .and().csrf().disable();
     }
 }
