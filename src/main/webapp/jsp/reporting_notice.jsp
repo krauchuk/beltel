@@ -148,6 +148,7 @@
             </c:if>
             <c:if test="${reportingNotice.status == true}">
                 <li><a class="unaccept-btn" href="${path}/change_status/${reportingNotice.id}">Отклонить</a></li>
+                <li><a class="unaccept-btn" href="${path}/admin/get_pdf/${reportingNotice.id}" download="report_${reportingNotice.id}.pdf">Сохранить отчет</a></li>
             </c:if>
 
             <li><a class="delete-btn" href="${path}/delete/${reportingNotice.id}">Удалить</a></li>
