@@ -1,0 +1,23 @@
+tr:hover td {
+    background:#494C4E;
+}
+.td-text-gl{
+    color: #8A8A8A;
+}
+th {
+    font-weight: normal;
+    color: white;
+    background: #2B2B2B;
+    border-bottom: 3px solid #2B2B2B;
+    padding: 12px 17px;
+}
+td{
+    color: #BABABA;
+    padding: 5px 5px;
+}
+
+table{
+    border-bottom: 3px solid #2B2B2B;
+    border-collapse: collapse;
+    background: #424547;
+}

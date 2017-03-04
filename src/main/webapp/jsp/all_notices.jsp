@@ -6,7 +6,12 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>Все заявки</title>
+    <c:if test="${mode == 'new'}">
+        <title>Новые заявки</title>
+    </c:if>
+    <c:if test="${mode == 'all'}">
+        <title>Все заявки</title>
+    </c:if>
     <meta charset="utf-8">
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/js/datatables.min.js"/>"></script>
@@ -14,8 +19,8 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
-<p style="text-align:center">Список всех заявок из БД</p>
-<table id="notice_table">
+<p style="text-align:center">Список заявок</p>
+<table id="notice_table" style="visibility: hidden">
     <thead>
     <tr>
         <th></th>
@@ -36,7 +41,7 @@
                 <td>${notice.id}</td>
                 <td>${notice.employers_id.fio}</td>
                 <td>${notice.employers_id.post_id.name}</td>
-                <td>${notice.employers_id.sector_id.division_id.name}</td>
+                <td>${notice.employers_id.division_id.name}</td>
                 <td>${notice.dateSet}</td>
                 <c:if test="${notice.status == true}">
                     <td>
@@ -79,8 +84,11 @@
                     "sortDescending": ": активировать для сортировки столбца по убыванию"
                 }
             },
-            stateSave: true
+            stateSave: true,
         });
+    })
+    $(document).ready(function () {
+        document.getElementById("notice_table").style.visibility = "visible";
     })
 </script>
 </body>

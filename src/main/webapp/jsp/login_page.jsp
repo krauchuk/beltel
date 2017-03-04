@@ -9,8 +9,6 @@
 <head>
     <link href="<c:url value="/css/dark/login_page.css" />" rel="stylesheet">
     <title>Вход в систему</title>
-    <style>
-    </style>
 <body>
 <div class="vertical-center">
     <div class="center-text">
@@ -26,5 +24,13 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </div>
+<script>
+    <%--if document ready--%>
+    $(function(){
+        if (window.location.href.toLowerCase().indexOf("loaded") < 0) {
+            location.reload();
+        }
+    });
+</script>
 </body>
 </html>

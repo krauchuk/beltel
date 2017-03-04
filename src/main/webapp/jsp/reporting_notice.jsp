@@ -66,7 +66,7 @@
                 </td>
                 <td>
                     <span class="td-text-gl">Отдел:</span>
-                        ${reportingNotice.employers_id.sector_id.division_id.name}
+                        ${reportingNotice.employers_id.division_id.name}
                 </td>
 
             </tr>
@@ -74,7 +74,7 @@
                 <td></td>
                 <td>
                     <span class="td-text-gl">Начальник отдела:</span>
-                        ${reportingNotice.employers_id.sector_id.division_id.divhead_id.fio}
+                        ${reportingNotice.employers_id.division_id.divheadName}
                 </td>
             </tr>
             <sec:authorize access="hasRole('ADMIN')">
@@ -142,17 +142,24 @@
         </table>
     </div>
     <sec:authorize access="hasRole('ADMIN')">
-        <ul>
+        <ul class="menu-ul">
             <c:if test="${reportingNotice.status == false}">
-                <li><a class="accept-btn" href="${path}/change_status/${reportingNotice.id}">Одобрить</a></li>
+                <li class="menu-li"><a class="accept-btn" href="${path}/change_status/${reportingNotice.id}">Одобрить</a></li>
             </c:if>
             <c:if test="${reportingNotice.status == true}">
-                <li><a class="unaccept-btn" href="${path}/change_status/${reportingNotice.id}">Отклонить</a></li>
-                <li><a class="unaccept-btn" href="${path}/admin/get_pdf/${reportingNotice.id}" download="report_${reportingNotice.id}.pdf">Сохранить отчет</a></li>
+                <li class="menu-li"><a class="unaccept-btn" href="${path}/change_status/${reportingNotice.id}">Отклонить</a></li>
+                <li class="menu-li"><a class="unaccept-btn" href="${path}/get_pdf/${reportingNotice.id}" download="report_${reportingNotice.id}.pdf">Сохранить отчет</a></li>
             </c:if>
 
-            <li><a class="delete-btn" href="${path}/delete/${reportingNotice.id}">Удалить</a></li>
+            <li class="menu-li"><a class="delete-btn" href="${path}/delete/${reportingNotice.id}">Удалить</a></li>
         </ul>
+    </sec:authorize>
+    <sec:authorize access="hasRole('USER')">
+        <c:if test="${reportingNotice.status == true}">
+            <ul class="menu-ul">
+                <li class="menu-li"><a class="unaccept-btn" href="${path}/get_pdf/${reportingNotice.id}" download="report_${reportingNotice.id}.pdf">Сохранить отчет</a></li>
+            </ul>
+        </c:if>
     </sec:authorize>
 </c:if>
 </body>

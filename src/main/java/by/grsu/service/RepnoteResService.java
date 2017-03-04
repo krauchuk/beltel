@@ -11,4 +11,6 @@ public interface RepnoteResService {
     RepnoteRes save(RepnoteRes repnoteRes);
     List<RepnoteRes> getByNoticeId(long id);
     void deleteByNoticeId(long id);
+    List<RepnoteRes> getBySubResourceId(long id);
+    List<RepnoteRes> getByRegimeAccessId(long id);
 }

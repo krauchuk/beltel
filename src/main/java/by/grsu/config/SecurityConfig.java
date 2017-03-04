@@ -26,8 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/index", "/notice/**").access("hasRole('ADMIN') or hasRole('USER')")
-                .antMatchers("/admin/**", "/all_notices", "/new_notices", "/edit_db", "/change_status/**", "/delete/**").access("hasRole('ADMIN')")
+        http.authorizeRequests().antMatchers("/", "/index", "/notice/**", "/get_pdf/**").access("hasRole('ADMIN') or hasRole('USER')")
+                .antMatchers("/admin/**", "/all_notices", "/new_notices", "/edit_db", "/change_status/**", "/delete/**", "/pdf_settings").access("hasRole('ADMIN')")
                 .antMatchers("/user/**", "/user_notices", "/create_notice").access("hasRole('USER')")
                 .and().formLogin()
                 .loginPage("/login_page").loginProcessingUrl("/login").usernameParameter("username")

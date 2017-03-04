@@ -12,7 +12,10 @@
     <meta charset="utf-8">
     <link href="<c:url value="/css/dark/repnote.css"/> " rel="stylesheet">
     <link href="<c:url value="/css/dark/edit_db.css" />" rel="stylesheet">
+    <link href="<c:url value="/css/dark/select2.css"/> " rel="stylesheet">
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/js/select2.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/js/noty.packaged.min.js"/>"></script>
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
@@ -47,7 +50,7 @@
         </td>
         <td>
             <span class="td-text-gl">Centrix:</span>
-            ${reportingNotice.employers_id.centrix}
+            ${employer.centrix}
         </td>
     </tr>
     <tr>
@@ -64,7 +67,7 @@
         </td>
         <td>
             <span class="td-text-gl">Отдел:</span>
-            ${employer.sector_id.division_id.name}
+            ${employer.division_id.name}
         </td>
 
     </tr>
@@ -72,7 +75,7 @@
         <td></td>
         <td>
             <span class="td-text-gl">Начальник отдела:</span>
-            ${employer.sector_id.division_id.divhead_id.fio}
+            ${employer.division_id.divheadName}
         </td>
     </tr>
 </table>
@@ -85,16 +88,22 @@
         <tr id="tabletr">
             <td>1. Подресурс:</td>
             <td>
-                <select name="repnotes[0].subResource_id.id">
+                <select class="select2" name="repnotes[0].subResource_id.id">
                     <option disabled selected hidden></option>
-                    <c:forEach var="subresource" items="${subresource}">
-                        <option value="${subresource.id}">${subresource.name}</option>
+                    <c:forEach var="resource" items="${resource}">
+                        <optgroup label="${resource.name}">
+                            <c:forEach var="subresource" items="${subresource}">
+                                <c:if test="${resource.name == subresource.resource_id.name}">
+                                    <option value="${subresource.id}">${subresource.name}</option>
+                                </c:if>
+                            </c:forEach>
+                        </optgroup>
                     </c:forEach>
                 </select>
             </td>
             <td>Режим доступа:</td>
             <td>
-                <select name="repnotes[0].regimeAccess_id.id">
+                <select class="select2" name="repnotes[0].regimeAccess_id.id">
                     <option disabled selected hidden></option>
                     <c:forEach var="regimeaccess" items="${regimeaccess}">
                         <option value="${regimeaccess.id}">${regimeaccess.name}</option>
@@ -106,13 +115,12 @@
     <p>
         <a onmousedown="return false" onclick="sendRepnote()" style="cursor: pointer;">Отправить заявку</a>
     </p>
-    <div style="color: #e85b47; text-align:center;" id="post-error"></div>
 </form:form>
 <script>
     var maxFields = 10;
     var currentCount = 1;
-    $("#post-error").hide();
     $("#delete-field").hide();
+    select2Init();
     $(document).ready(function () {
         $("#delete-field").append('<a class="delete-btn" onclick="deleteResourceField()" style="cursor: pointer;">Убрать</a>');
     });
@@ -123,11 +131,16 @@
                 isNullable = true;
             }
         });
-        if(!isNullable){
+        if (!isNullable) {
             document.getElementById("notice-form").submit();
-        }else{
-            $("#post-error").text("Заполните все поля");
-            $("#post-error").show().delay(3000).hide(0);
+        } else {
+            var n = noty({
+                text: 'Заполните все поля',
+                layout: 'bottomRight',
+                theme: 'relax',
+                type: 'error',
+                timeout: 3000
+            });
         }
     }
     function deleteResourceField() {
@@ -149,18 +162,41 @@
             var subNum = currentCount + 1;
             $("#input-fields").append(
                     '<tr id="table-tr' + currentCount + '"><td>' + subNum + '. Подресурс:</td><td>' +
-                    '<select name="repnotes[' + currentCount + '].subResource_id.id">' +
+                    '<select class="select2" name="repnotes[' + currentCount + '].subResource_id.id">' +
                     '<option disabled selected hidden></option>' +
+                    '<c:forEach var="resource" items="${resource}">' +
+                    '<optgroup label="${resource.name}">' +
                     '<c:forEach var="subresource" items="${subresource}">' +
-                    '<option value="${subresource.id}">${subresource.name}</option></c:forEach>' +
+                    '<c:if test="${resource.name == subresource.resource_id.name}">' +
+                    '<option value="${subresource.id}">${subresource.name}</option>' +
+                    '</c:if>' +
+                    '</c:forEach>' +
+                    '</optgroup>' +
+                    '</c:forEach>' +
                     '</select></td><td>Режим доступа:</td><td>' +
-                    '<select name="repnotes[' + currentCount + '].regimeAccess_id.id"><option disabled selected hidden></option>' +
+                    '<select class="select2" name="repnotes[' + currentCount + '].regimeAccess_id.id"><option disabled selected hidden></option>' +
                     '<c:forEach var="regimeaccess" items="${regimeaccess}">' +
                     '<option value="${regimeaccess.id}">${regimeaccess.name}</option>' +
                     '</c:forEach></select></td></tr>');
             currentCount++;
+            select2Init();
             $("#delete-field").show();
         }
+    }
+    function select2Init() {
+        $('.select2').select2({
+            dropdownAutoWidth: true,
+            width: "100%",
+            sorter: function (data) {
+                return data.sort(function (a, b) {
+                    return a.text < b.text ? -1 : a.text > b.text ? 1 : 0;
+                });
+            }
+        }).on("select2:select", function (e) {
+            $('.select2-selection__rendered li.select2-selection__choice').sort(function (a, b) {
+                return $(a).text() < $(b).text() ? -1 : $(a).text() > $(b).text() ? 1 : 0;
+            }).prependTo('.select2-selection__rendered');
+        });
     }
 </script>
 </body>

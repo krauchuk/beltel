@@ -71,8 +71,6 @@ public class SaveUpdateTableDataController {
         if(result.hasErrors()){
             return "";
         }
-        Employer employer = employerService.getById(data.getDivhead_id().getId());
-        data.setDivhead_id(employer);
         if (data.getId() == 0) {
             divisionService.save(data);
             return "redirect:/admin/table_division_edit/0";
@@ -88,13 +86,15 @@ public class SaveUpdateTableDataController {
             return "";
         }
         String fio = data.getSurname() + " " +data.getName().toUpperCase().charAt(0)
-                + ". " + data.getMiddlename().toUpperCase().charAt(0) + ".";
+                + "." + data.getMiddlename().toUpperCase().charAt(0) + ".";
         data.setFio(fio);
         Post post = postService.getById(data.getPost_id().getId());
         Zues zues = zuesService.getById(data.getZues_id().getId());
+        Division division = divisionService.getById(data.getDivision_id().getId());
         Sector sector = sectorService.getById(data.getSector_id().getId());
         data.setPost_id(post);
         data.setZues_id(zues);
+        data.setDivision_id(division);
         data.setSector_id(sector);
         if (data.getId() == 0) {
             employerService.save(data);

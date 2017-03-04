@@ -38,4 +38,12 @@ public class RepnoteResServiceImpl implements RepnoteResService{
     public void deleteByNoticeId(long id) {
         service.deleteByNoticeId(id);
     }
+
+    public List<RepnoteRes> getBySubResourceId(long id) {
+        return service.getBySubResourceId(id);
+    }
+
+    public List<RepnoteRes> getByRegimeAccessId(long id) {
+        return service.getByRegimeAccessId(id);
+    }
 }

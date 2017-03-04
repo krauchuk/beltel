@@ -28,20 +28,16 @@
         <option value="table_sector">Сектора</option>
         <option value="table_employer">Сотрудники</option>
     </select>
+    <a style="padding: 3px; cursor: pointer;" onclick="getCurrentData()">Обновить таблицу</a>
 </div>
-
 <p></p>
-
-<div style="float:left;width: 100%;" id="get_table"></div>
-
+<div style="float:left;width: 100%; visibility: hidden;" id="get_table"></div>
 <div class="popup" id="popup">
     <div class="popup-content" id="popup-content">
     </div>
 </div>
-
 <script>
     hidePopup();
-    hideTable();
     $(document).ready(function () {
         $("#popup-content").append('<a class="close-btn" onclick="hidePopup()">&#10006;</a><div id="popup-data"></div>');
     });
@@ -51,15 +47,11 @@
     function getCurrentData() {
         $(document).ready(function () {
             var selectTableUrl = $("select#select_table_name").val();
-            hideTable();
             $.ajax({
                 type: "GET",
                 url: "admin/" + selectTableUrl,
                 success: function (data) {
                     $('#get_table').html(data);
-                    $(document).ready(function () {
-                        showTable();
-                    });
                 }
             });
         });
@@ -69,29 +61,21 @@
             tableDT.fnPageChange("last", true);
         });
     }
-    function hidePopup() {
-        $("#popup").hide();
-    }
-    function showPopup() {
-        $("#popup").show();
-    }
-    function hideTable() {
-        $("#get_table").hide();
-    }
-    function showTable() {
-        $("#get_table").show();
-    }
     function setPopupContent(dataID, dataType) {
         $.ajax({
             type: "GET",
             url: "admin/table_" + dataType + "_edit/" + dataID,
             success: function (data) {
                 $("#popup-data").html(data);
-                $(document).ready(function () {
-                    showPopup();
-                });
+                showPopup();
             }
         });
+    }
+    function hidePopup() {
+        $("#popup").hide();
+    }
+    function showPopup() {
+        $("#popup").show();
     }
 </script>
 

@@ -10,4 +10,5 @@ public interface ReportingNoticeService {
     void delete(long id);
     ReportingNotice save(ReportingNotice reportingNotice);
     List<ReportingNotice> getByEmployerId(long id);
+    List<ReportingNotice> getByStatus(boolean status);
 }

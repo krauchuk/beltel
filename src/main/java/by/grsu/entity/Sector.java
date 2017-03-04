@@ -16,8 +16,8 @@ public class Sector {
     @Column(name = "shortname", length = 10)
     private String shortName;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "division_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "division_id", nullable = false)
     private Division division_id;
 
     public long getId() {

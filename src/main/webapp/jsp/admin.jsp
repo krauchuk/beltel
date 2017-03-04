@@ -7,7 +7,6 @@
 <html>
 <head>
 <title>Панель администратора</title>
-<meta charset="utf-8">
 </head>
 <body>
 	<jsp:include page="menu.jsp" />

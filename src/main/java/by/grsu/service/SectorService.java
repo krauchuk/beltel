@@ -9,4 +9,5 @@ public interface SectorService {
     Sector getById(long id);
     void delete(long id);
     Sector save(Sector sector);
+    List<Sector> getByDivisionId(long id);
 }

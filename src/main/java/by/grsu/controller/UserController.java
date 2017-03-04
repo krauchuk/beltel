@@ -37,6 +37,9 @@ public class UserController {
     @Autowired
     RepnoteResServiceImpl repnoteResService;
 
+    @Autowired
+    ResourceServiceImpl resourceService;
+
     @RequestMapping(value = "/user_notices", method = RequestMethod.GET)
     public String userRequest(ModelMap modelMap) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -60,6 +63,7 @@ public class UserController {
         list.setRepnotes(repnotes);
         modelMap.addAttribute("employer", user.getEmployer_id());
         modelMap.addAttribute("subresource", subResourceService.getAll());
+        modelMap.addAttribute("resource", resourceService.getAll());
         modelMap.addAttribute("regimeaccess", regimeAccessService.getAll());
         modelMap.addAttribute("data", list);
         return "create_notice";

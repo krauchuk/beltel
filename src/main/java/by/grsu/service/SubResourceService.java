@@ -9,4 +9,5 @@ public interface SubResourceService  {
     SubResource getById(long id);
     void delete(long id);
     SubResource save(SubResource subResource);
+    List<SubResource> getByResourceId(long id);
 }

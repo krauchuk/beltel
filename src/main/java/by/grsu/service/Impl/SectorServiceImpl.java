@@ -29,4 +29,8 @@ public class SectorServiceImpl implements SectorService {
     public Sector save(Sector sector) {
         return service.saveAndFlush(sector);
     }
+
+    public List<Sector> getByDivisionId(long id) {
+        return service.getByDivisionId(id);
+    }
 }

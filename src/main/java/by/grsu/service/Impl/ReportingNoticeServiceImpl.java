@@ -33,4 +33,8 @@ public class ReportingNoticeServiceImpl implements ReportingNoticeService{
     public List<ReportingNotice> getByEmployerId(long id) {
         return service.getByEmployerId(id);
     }
+
+    public List<ReportingNotice> getByStatus(boolean status) {
+        return service.getByStatus(status);
+    }
 }

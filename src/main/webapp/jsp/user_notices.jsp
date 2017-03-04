@@ -15,7 +15,7 @@
 <body>
 <jsp:include page="menu.jsp"/>
 <p style="text-align:center">Список ваших заявок</p>
-<table id="user-notices">
+<table id="user-notices" style="visibility: hidden">
     <thead>
     <tr>
         <th></th>
@@ -77,6 +77,9 @@
             },
             stateSave: true
         });
+    })
+    $(document).ready(function () {
+        document.getElementById("user-notices").style.visibility = "visible";
     })
 </script>
 </body>

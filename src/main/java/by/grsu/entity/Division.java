@@ -16,9 +16,8 @@ public class Division {
     @Column(name = "shortname", length = 10)
     private String shortName;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "divhead_id")
-    private Employer divhead_id;
+    @Column(name = "divheadname")
+    private String divheadName;
 
     public long getId() {
         return id;
@@ -44,11 +43,11 @@ public class Division {
         this.shortName = shortName;
     }
 
-    public Employer getDivhead_id() {
-        return divhead_id;
+    public String getDivheadName() {
+        return divheadName;
     }
 
-    public void setDivhead_id(Employer divhead_id) {
-        this.divhead_id = divhead_id;
+    public void setDivheadName(String divheadName) {
+        this.divheadName = divheadName;
     }
 }

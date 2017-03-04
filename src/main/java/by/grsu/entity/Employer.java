@@ -13,41 +13,53 @@ public class Employer {
     @Column(name = "id", nullable = false)
     private long id;
 
-    @Column(name = "centrix", length = 4)
+    @Column(name = "centrix", length = 4, nullable = false)
     private String centrix;
 
     @Column(name = "email", length = 50)
     private String email;
 
-    @Column(name = "fio", length = 55)
+    @Column(name = "fio", length = 55, nullable = false)
     private String fio;
 
-    @Column(name = "middlename", length = 40)
+    @Column(name = "middlename", length = 40, nullable = false)
     private String middlename;
 
-    @Column(name = "name", length = 30)
+    @Column(name = "name", length = 30, nullable = false)
     private String name;
 
     @Column(name = "other", length = 70)
     private String other;
 
-    @Column(name = "surname", length = 50)
+    @Column(name = "surname", length = 50, nullable = false)
     private String surname;
 
-    @Column(name = "teljob", length = 15)
+    @Column(name = "teljob", length = 15, nullable = false)
     private String telJob;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "post_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "post_id", nullable = false)
     private Post post_id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "zues_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "zues_id", nullable = false)
     private Zues zues_id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "sector_id")
     private Sector sector_id;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "division_id", nullable = false)
+    private Division division_id;
+
+    public Division getDivision_id() {
+        return division_id;
+    }
+
+    public void setDivision_id(Division division_id) {
+        this.division_id = division_id;
+    }
 
     public long getId() {
         return id;

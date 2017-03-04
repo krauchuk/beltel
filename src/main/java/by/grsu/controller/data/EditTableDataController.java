@@ -38,6 +38,15 @@ public class EditTableDataController {
     @Autowired
     private ZuesServiceImpl zuesService;
 
+    @Autowired
+    private RepnoteResServiceImpl repnoteResService;
+
+    @Autowired
+    private UsersServiceImp usersService;
+
+    @Autowired
+    private ReportingNoticeServiceImpl reportingNoticeService;
+
     @RequestMapping(value = "/admin/table_division_edit/{id}")
     public String editDivisionData(@PathVariable long id, ModelMap modelMap) {
         modelMap.addAttribute("divhead", employerService.getAll());
@@ -45,6 +54,10 @@ public class EditTableDataController {
         if (id == 0) {
             modelMap.addAttribute("data", new Division());
             return "add_edit_data";
+        }
+        if(employerService.getByDivisionId(id).size() == 0 &&
+                sectorService.getByDivisionId(id).size() == 0){
+            modelMap.addAttribute("isused", false);
         }
         modelMap.addAttribute("data", divisionService.getById(id));
         return "add_edit_data";
@@ -55,10 +68,15 @@ public class EditTableDataController {
         modelMap.addAttribute("post", postService.getAll());
         modelMap.addAttribute("zues", zuesService.getAll());
         modelMap.addAttribute("sector", sectorService.getAll());
+        modelMap.addAttribute("division", divisionService.getAll());
         modelMap.addAttribute("dataType", "employer");
         if (id == 0) {
             modelMap.addAttribute("data", new Employer());
             return "add_edit_data";
+        }
+        if(usersService.getByEmployerId(id).size() == 0 &&
+                reportingNoticeService.getByEmployerId(id).size() == 0){
+            modelMap.addAttribute("isused", false);
         }
         modelMap.addAttribute("data", employerService.getById(id));
         return "add_edit_data";
@@ -71,6 +89,9 @@ public class EditTableDataController {
             modelMap.addAttribute("data", new Post());
             return "add_edit_data";
         }
+        if(employerService.getByPostId(id).size() == 0){
+            modelMap.addAttribute("isused", false);
+        }
         modelMap.addAttribute("data", postService.getById(id));
         return "add_edit_data";
     }
@@ -82,6 +103,9 @@ public class EditTableDataController {
             modelMap.addAttribute("data", new RegimeAccess());
             return "add_edit_data";
         }
+        if(repnoteResService.getByRegimeAccessId(id).size() == 0){
+            modelMap.addAttribute("isused", false);
+        }
         modelMap.addAttribute("data", regimeAccessService.getById(id));
         return "add_edit_data";
     }
@@ -92,6 +116,9 @@ public class EditTableDataController {
         if (id == 0) {
             modelMap.addAttribute("data", new Resource());
             return "add_edit_data";
+        }
+        if(subResourceService.getByResourceId(id).size() == 0){
+            modelMap.addAttribute("isused", false);
         }
         modelMap.addAttribute("data", resourceService.getById(id));
         return "add_edit_data";
@@ -105,6 +132,9 @@ public class EditTableDataController {
             modelMap.addAttribute("data", new Sector());
             return "add_edit_data";
         }
+        if(employerService.getBySectorId(id).size() == 0){
+            modelMap.addAttribute("isused", false);
+        }
         modelMap.addAttribute("data", sectorService.getById(id));
         return "add_edit_data";
     }
@@ -117,6 +147,9 @@ public class EditTableDataController {
             modelMap.addAttribute("data", new SubResource());
             return "add_edit_data";
         }
+        if(repnoteResService.getBySubResourceId(id).size() == 0){
+            modelMap.addAttribute("isused", false);
+        }
         modelMap.addAttribute("data", subResourceService.getById(id));
         return "add_edit_data";
     }
@@ -128,6 +161,9 @@ public class EditTableDataController {
         if (id == 0) {
             modelMap.addAttribute("data", new Zues());
             return "add_edit_data";
+        }
+        if(employerService.getByZuesId(id).size() == 0){
+            modelMap.addAttribute("isused", false);
         }
         modelMap.addAttribute("data", zuesService.getById(id));
         return "add_edit_data";

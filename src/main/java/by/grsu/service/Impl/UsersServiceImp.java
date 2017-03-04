@@ -6,6 +6,8 @@ import by.grsu.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsersServiceImp implements UsersService {
     @Autowired
@@ -13,5 +15,9 @@ public class UsersServiceImp implements UsersService {
 
     public Users getByUsername(String username) {
         return service.getUserByUsername(username);
+    }
+
+    public List<Users> getByEmployerId(long id) {
+        return service.getByEmployerId(id);
     }
 }

@@ -29,4 +29,20 @@ public class EmployerServiceImpl implements EmployerService {
     public Employer save(Employer employer) {
         return service.saveAndFlush(employer);
     }
+
+    public List<Employer> getByZuesId(long id) {
+        return service.getByZuesId(id);
+    }
+
+    public List<Employer> getByPostId(long id) {
+        return service.getByPostId(id);
+    }
+
+    public List<Employer> getBySectorId(long id) {
+        return service.getBySectorId(id);
+    }
+
+    public List<Employer> getByDivisionId(long id) {
+        return service.getByDivisionId(id);
+    }
 }

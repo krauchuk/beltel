@@ -13,6 +13,12 @@ public interface RepnoteResRepository extends JpaRepository<RepnoteRes, Long> {
     @Query("SELECT r FROM RepnoteRes r WHERE r.reportingNotice_id.id = :id")
     List<RepnoteRes> getByNoticeId(@Param("id") long id);
 
+    @Query("SELECT r FROM RepnoteRes r WHERE r.subResource_id.id = :id")
+    List<RepnoteRes> getBySubResourceId(@Param("id") long id);
+
+    @Query("SELECT r FROM RepnoteRes r WHERE r.regimeAccess_id.id = :id")
+    List<RepnoteRes> getByRegimeAccessId(@Param("id") long id);
+
     @Query("DELETE FROM RepnoteRes r WHERE r.reportingNotice_id.id = :id")
     @Modifying
     @Transactional

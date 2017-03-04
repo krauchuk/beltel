@@ -6,19 +6,19 @@ import javax.persistence.*;
 @Table(name = "users")
 public class Users {
     @Id
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     private String role;
 
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false)
     private int enabled;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "employer_id")
     private Employer employer_id;
 

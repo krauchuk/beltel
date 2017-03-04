@@ -28,7 +28,7 @@ public class ReportingNotice {
     @Column(name = "userpcname", length = 100)
     private String userPcName;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "employers_id", nullable = false)
     private Employer employers_id;
 

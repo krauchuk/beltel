@@ -3,14 +3,14 @@ body{
     background: #3C3F41;
     color: #BABABA;
 }
-ul {
+.menu-ul {
     padding: 0;
     background: #2B2B2B;
     border: 1px solid #2B2B2B;
     font-family: Arial;
 }
 
-li {
+.menu-li {
     display: inline-block;
 }
 
@@ -37,6 +37,7 @@ a:hover {
 }
 
 .li-left {
+    display: inline-block;
     position: absolute;
     right: 9px;
 }

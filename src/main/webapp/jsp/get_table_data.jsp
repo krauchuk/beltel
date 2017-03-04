@@ -13,101 +13,103 @@
     <link href="<c:url value="/css/dark/table.css" />" rel="stylesheet">
 </head>
 <body>
-<div>
-    <a style="padding: 3px; cursor: pointer;" onclick="setPopupContent('0', '${dataType}')">+ Добавить запись</a>
-    <p></p>
-</div>
-<table id="data_table">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <c:choose>
-            <c:when test="${dataType == 'division'
-                or dataType == 'sector'}">
-                <th>Название</th>
-                <th>Сокращенно</th>
-                <c:choose>
-                    <c:when test="${dataType == 'division'}">
-                        <th>Начальник</th>
-                    </c:when>
-                    <c:when test="${dataType == 'sector'}">
-                        <th>Отдел</th>
-                    </c:when>
-                </c:choose>
-            </c:when>
-            <c:when test="${dataType == 'employer'}">
-                <th>ФИО</th>
-                <th>Должность</th>
-                <th>Отдел</th>
-            </c:when>
-            <c:when test="${dataType == 'post'
-            or dataType == 'regimeaccess'
-            or dataType == 'resource'
-            or dataType == 'zues'
-            or dataType == 'subresource'}">
-                <th>Название</th>
-                <c:choose>
-                    <c:when test="${dataType == 'subresource'}">
-                        <th>Ресурс</th>
-                    </c:when>
-                    <c:when test="${dataType == 'zues'}">
-                        <th>Область</th>
-                    </c:when>
-                </c:choose>
-            </c:when>
-        </c:choose>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="data" items="${data}">
+<div id="page_content" style="visibility: hidden">
+    <div>
+        <a style="padding: 3px; cursor: pointer;" onclick="setPopupContent('0', '${dataType}')">+ Добавить запись</a>
+        <p></p>
+    </div>
+    <table id="data_table">
+        <thead>
         <tr>
-            <td>${data.id}</td>
+            <th>ID</th>
             <c:choose>
                 <c:when test="${dataType == 'division'
                 or dataType == 'sector'}">
-                    <td>${data.name}</td>
-                    <td>${data.shortName}</td>
+                    <th>Название</th>
+                    <th>Сокращенно</th>
                     <c:choose>
                         <c:when test="${dataType == 'division'}">
-                            <td>${data.divhead_id.fio}</td>
+                            <th>Начальник</th>
                         </c:when>
                         <c:when test="${dataType == 'sector'}">
-                            <td>${data.division_id.name}</td>
+                            <th>Отдел</th>
                         </c:when>
                     </c:choose>
                 </c:when>
                 <c:when test="${dataType == 'employer'}">
-                    <td>${data.fio}</td>
-                    <td>${data.post_id.name}</td>
-                    <td>${data.sector_id.division_id.shortName}</td>
+                    <th>ФИО</th>
+                    <th>Должность</th>
+                    <th>Отдел</th>
                 </c:when>
                 <c:when test="${dataType == 'post'
+            or dataType == 'regimeaccess'
+            or dataType == 'resource'
+            or dataType == 'zues'
+            or dataType == 'subresource'}">
+                    <th>Название</th>
+                    <c:choose>
+                        <c:when test="${dataType == 'subresource'}">
+                            <th>Ресурс</th>
+                        </c:when>
+                        <c:when test="${dataType == 'zues'}">
+                            <th>Область</th>
+                        </c:when>
+                    </c:choose>
+                </c:when>
+            </c:choose>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="data" items="${data}">
+            <tr>
+                <td>${data.id}</td>
+                <c:choose>
+                    <c:when test="${dataType == 'division'
+                or dataType == 'sector'}">
+                        <td>${data.name}</td>
+                        <td>${data.shortName}</td>
+                        <c:choose>
+                            <c:when test="${dataType == 'division'}">
+                                <td>${data.divheadName}</td>
+                            </c:when>
+                            <c:when test="${dataType == 'sector'}">
+                                <td>${data.division_id.name}</td>
+                            </c:when>
+                        </c:choose>
+                    </c:when>
+                    <c:when test="${dataType == 'employer'}">
+                        <td>${data.fio}</td>
+                        <td>${data.post_id.name}</td>
+                        <td>${data.division_id.name}</td>
+                    </c:when>
+                    <c:when test="${dataType == 'post'
                 or dataType == 'regimeaccess'
                 or dataType == 'resource'
                 or dataType == 'zues'
                 or dataType == 'subresource'}">
-                    <td>${data.name}</td>
-                    <c:choose>
-                        <c:when test="${dataType == 'subresource'}">
-                            <td>${data.resource_id.name}</td>
-                        </c:when>
-                        <c:when test="${dataType == 'zues'}">
-                            <td>${data.region_id.name}</td>
-                        </c:when>
-                    </c:choose>
-                </c:when>
-                <c:otherwise>
-                    Ошибка. Данный dataType отсутствует.
-                </c:otherwise>
-            </c:choose>
-            <td>
-                <a class="view-btn" onclick="setPopupContent('${data.id}', '${dataType}')" style="cursor: pointer;">Редактировать</a>
-            </td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+                        <td>${data.name}</td>
+                        <c:choose>
+                            <c:when test="${dataType == 'subresource'}">
+                                <td>${data.resource_id.name}</td>
+                            </c:when>
+                            <c:when test="${dataType == 'zues'}">
+                                <td>${data.region_id.name}</td>
+                            </c:when>
+                        </c:choose>
+                    </c:when>
+                    <c:otherwise>
+                        Ошибка. Данный dataType отсутствует.
+                    </c:otherwise>
+                </c:choose>
+                <td>
+                    <a class="view-btn" onclick="setPopupContent('${data.id}', '${dataType}')" style="cursor: pointer;">Редактировать</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 <script>
     var tableDT;
     $(function () {
@@ -136,7 +138,10 @@
             },
             stateSave: true
         });
-    });
+    })
+    $(document).ready(function () {
+        document.getElementById("page_content").style.visibility = "visible";
+    })
 </script>
 </body>
 </html>

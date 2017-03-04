@@ -20,6 +20,6 @@ public class EmployerValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "telJob", "not nullable");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "post_id", "not nullable");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "zues_id", "not nullable");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sector_id", "not nullable");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "division_id", "not nullable");
     }
 }

@@ -29,4 +29,8 @@ public class SubResourceServiceImp implements SubResourceService {
     public SubResource save(SubResource subResource) {
         return service.saveAndFlush(subResource);
     }
+
+    public List<SubResource> getByResourceId(long id) {
+        return service.getByResourceId(id);
+    }
 }
