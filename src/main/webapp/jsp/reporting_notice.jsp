@@ -11,7 +11,8 @@
         <title>Заявка #${reportingNotice.id}</title>
     </c:if>
     <meta charset="utf-8">
-    <link href="<c:url value="/css/dark/repnote.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/repnote.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/buttons.css"/> " rel="stylesheet">
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
@@ -78,19 +79,21 @@
                 </td>
             </tr>
             <sec:authorize access="hasRole('ADMIN')">
-                <tr>
-                    <td colspan="2">
-                        <span class="td-text-gl">Заметка о пользователе:</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                            ${reportingNotice.employers_id.other}
-                    </td>
-                </tr>
+                <c:if test="${not empty reportingNotice.employers_id.other}">
+                    <tr>
+                        <td colspan="2">
+                            <span class="td-text-gl">Заметка о пользователе:</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                                ${reportingNotice.employers_id.other}
+                        </td>
+                    </tr>
+                </c:if>
             </sec:authorize>
         </table>
-        <table>
+        <table class="repnote-res-table">
             <c:if test="${not empty subres}">
                 <th>Подресурс</th>
                 <th>Ресурс</th>
@@ -142,13 +145,16 @@
         </table>
     </div>
     <sec:authorize access="hasRole('ADMIN')">
-        <ul class="menu-ul">
+        <ul class="menu-bottom-ul">
             <c:if test="${reportingNotice.status == false}">
-                <li class="menu-li"><a class="accept-btn" href="${path}/change_status/${reportingNotice.id}">Одобрить</a></li>
+                <li class="menu-li"><a class="accept-btn"
+                                       href="${path}/change_status/${reportingNotice.id}">Одобрить</a></li>
             </c:if>
             <c:if test="${reportingNotice.status == true}">
-                <li class="menu-li"><a class="unaccept-btn" href="${path}/change_status/${reportingNotice.id}">Отклонить</a></li>
-                <li class="menu-li"><a class="unaccept-btn" href="${path}/get_pdf/${reportingNotice.id}" download="report_${reportingNotice.id}.pdf">Сохранить отчет</a></li>
+                <li class="menu-li"><a class="unaccept-btn"
+                                       href="${path}/change_status/${reportingNotice.id}">Отклонить</a></li>
+                <li class="menu-li"><a class="unaccept-btn" href="${path}/get_pdf/${reportingNotice.id}"
+                                       download="report_${reportingNotice.id}.pdf">Сохранить отчет</a></li>
             </c:if>
 
             <li class="menu-li"><a class="delete-btn" href="${path}/delete/${reportingNotice.id}">Удалить</a></li>
@@ -156,8 +162,9 @@
     </sec:authorize>
     <sec:authorize access="hasRole('USER')">
         <c:if test="${reportingNotice.status == true}">
-            <ul class="menu-ul">
-                <li class="menu-li"><a class="unaccept-btn" href="${path}/get_pdf/${reportingNotice.id}" download="report_${reportingNotice.id}.pdf">Сохранить отчет</a></li>
+            <ul class="menu-bottom-ul">
+                <li class="menu-li"><a class="unaccept-btn" href="${path}/get_pdf/${reportingNotice.id}"
+                                       download="report_${reportingNotice.id}.pdf">Сохранить отчет</a></li>
             </ul>
         </c:if>
     </sec:authorize>

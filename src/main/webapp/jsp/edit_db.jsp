@@ -8,14 +8,15 @@
 <head>
     <title>Редактирование БД</title>
     <meta charset="utf-8">
-    <link href="<c:url value="/css/dark/edit_db.css"/>" rel="stylesheet">
-    <link href="<c:url value="/css/dark/popup.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/edit_db.css"/>" rel="stylesheet">
+    <link href="<c:url value="/css/light/popup.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/buttons.css"/> " rel="stylesheet">
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
 <p style="text-align:center">Редактирование таблиц БД</p>
-<div style="background-color: #2B2B2B; padding: 3px;">
+<div class="edit-db-select-line">
     Таблица:
     <select id="select_table_name">
         <option disabled selected hidden></option>
@@ -28,7 +29,7 @@
         <option value="table_sector">Сектора</option>
         <option value="table_employer">Сотрудники</option>
     </select>
-    <a style="padding: 3px; cursor: pointer;" onclick="getCurrentData()">Обновить таблицу</a>
+    <a class="refresh-table-btn" onclick="getCurrentData()">Обновить таблицу</a>
 </div>
 <p></p>
 <div style="float:left;width: 100%; visibility: hidden;" id="get_table"></div>

@@ -10,12 +10,13 @@
 <head>
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/js/datatables.min.js"/>"></script>
-    <link href="<c:url value="/css/dark/table.css" />" rel="stylesheet">
+    <link href="<c:url value="/css/light/table.css" />" rel="stylesheet">
+    <link href="<c:url value="/css/light/buttons.css" />" rel="stylesheet">
 </head>
 <body>
 <div id="page_content" style="visibility: hidden">
     <div>
-        <a style="padding: 3px; cursor: pointer;" onclick="setPopupContent('0', '${dataType}')">+ Добавить запись</a>
+        <a class="add-data-btn" onclick="setPopupContent('0', '${dataType}')">+ Добавить запись</a>
         <p></p>
     </div>
     <table id="data_table">

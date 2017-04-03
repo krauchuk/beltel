@@ -32,14 +32,14 @@ public class AdminController {
     private ReportingNoticeServiceImpl reportingNoticeService;
 
     @RequestMapping(value = "/new_notices", method = RequestMethod.GET)
-    public String newRequest(ModelMap modelMap) {
+    public String newNotices(ModelMap modelMap) {
         modelMap.addAttribute("mode", "new");
         modelMap.addAttribute("reportingNotice", reportingNoticeService.getByStatus(false));
         return "all_notices";
     }
 
     @RequestMapping(value = "/all_notices", method = RequestMethod.GET)
-    public String allRequest(ModelMap modelMap) {
+    public String allNotices(ModelMap modelMap) {
         modelMap.addAttribute("mode", "all");
         modelMap.addAttribute("reportingNotice", reportingNoticeService.getAll());
         return "all_notices";

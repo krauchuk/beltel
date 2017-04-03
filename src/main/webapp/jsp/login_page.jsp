@@ -7,7 +7,7 @@
 %>
 <html>
 <head>
-    <link href="<c:url value="/css/dark/login_page.css" />" rel="stylesheet">
+    <link href="<c:url value="/css/light/login_page.css" />" rel="stylesheet">
     <title>Вход в систему</title>
 <body>
 <div class="vertical-center">

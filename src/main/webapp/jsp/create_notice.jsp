@@ -10,8 +10,9 @@
 <head>
     <title>Новая заявка</title>
     <meta charset="utf-8">
-    <link href="<c:url value="/css/dark/repnote.css"/> " rel="stylesheet">
-    <link href="<c:url value="/css/dark/edit_db.css" />" rel="stylesheet">
+    <link href="<c:url value="/css/light/repnote.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/edit_db.css" />" rel="stylesheet">
+    <link href="<c:url value="/css/light/buttons.css" />" rel="stylesheet">
     <link href="<c:url value="/css/dark/select2.css"/> " rel="stylesheet">
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/js/select2.min.js"/>"></script>
@@ -81,7 +82,7 @@
 </table>
 <form:form action="${path}/user/notice_add/" method="post" modelAttribute="data" id="notice-form">
     <p>
-        <a onmousedown="return false" onclick="addResourceField()" style="cursor: pointer;">+ Добавить еще ресурс</a>
+        <a onmousedown="return false" onclick="addResourceField()" class="add-data-btn">+ Добавить еще ресурс</a>
         <span onmousedown="return false" id="delete-field"></span>
     </p>
     <table style="width: auto;" id="input-fields">
@@ -113,7 +114,7 @@
         </tr>
     </table>
     <p>
-        <a onmousedown="return false" onclick="sendRepnote()" style="cursor: pointer;">Отправить заявку</a>
+        <a onmousedown="return false" onclick="sendRepnote()" class="add-data-btn">Отправить заявку</a>
     </p>
 </form:form>
 <script>
@@ -122,7 +123,7 @@
     $("#delete-field").hide();
     select2Init();
     $(document).ready(function () {
-        $("#delete-field").append('<a class="delete-btn" onclick="deleteResourceField()" style="cursor: pointer;">Убрать</a>');
+        $("#delete-field").append('<a class="delete-resource-btn" onclick="deleteResourceField()" style="cursor: pointer;">Убрать</a>');
     });
     function sendRepnote() {
         var isNullable = false;

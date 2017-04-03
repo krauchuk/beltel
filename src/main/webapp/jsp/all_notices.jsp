@@ -15,7 +15,8 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/js/datatables.min.js"/>"></script>
-    <link href="<c:url value="/css/dark/table.css" />" rel="stylesheet">
+    <link href="<c:url value="/css/light/table.css" />" rel="stylesheet">
+    <link href="<c:url value="/css/light/buttons.css" />" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="menu.jsp"/>

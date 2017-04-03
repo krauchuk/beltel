@@ -8,7 +8,8 @@
 <html>
 <head>
     <title>Настройки PDF</title>
-    <link href="<c:url value="/css/dark/pdf_settings.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/pdf_settings.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/buttons.css"/> " rel="stylesheet">
 </head>
 <body>
 <jsp:include page="menu.jsp" />
@@ -17,31 +18,31 @@
         <table>
             <tr>
                 <td>
-                    Для
+                    <span class="td-text-gl">Для</span>
                 </td>
                 <td>
-                    <form:input path="branch"></form:input> филиала <span class="td-text-gl">(Например: Гродненского)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Директору
-                </td>
-                <td>
-                    <form:input path="director"></form:input> <span class="td-text-gl">(Например: Матвееву В.В.)</span>
+                    <form:input path="branch"></form:input> <span class="td-text-gl">филиала</span> (Например: Гродненского)
                 </td>
             </tr>
             <tr>
                 <td>
-                    Местоположение
+                    <span class="td-text-gl">Директору</span>
                 </td>
                 <td>
-                    <form:input path="city"></form:input> <span class="td-text-gl">(Например: г. Гродно)</span>
+                    <form:input path="director"></form:input> (Например: Матвееву В.В.)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="td-text-gl">Местоположение</span>
+                </td>
+                <td>
+                    <form:input path="city"></form:input> (Например: г. Гродно)
                 </td>
             </tr>
         </table>
         <p>
-            <a onmousedown="return false" onclick="postForm()" style="cursor: pointer;">Сохранить</a>
+            <a onmousedown="return false" onclick="postForm()" class="save-pdf-settings-btn">Сохранить</a>
         </p>
     </form:form>
 </c:if>

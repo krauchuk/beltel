@@ -1,0 +1,95 @@
+body {
+    font-family: Arial;
+    background: #f7f7f7;
+    color: #7a7a7a;
+    margin: 0;
+}
+
+.menu-ul {
+    padding: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #C8C8C8;
+    font-family: Arial;
+}
+
+.menu-bottom-ul {
+    padding: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    font-family: Arial;
+}
+
+.menu-li {
+    display: inline-block;
+    border-left: 1px solid #C8C8C8;
+    border-right: 1px solid #C8C8C8;
+}
+
+.menu-a {
+    border-radius: 2px;
+    padding: 8px;
+    display: inline-block;
+    text-decoration: none;
+    color: #848484;
+    background: #F9F9F9;
+}
+
+.menu-a:hover {
+    background: white;
+    text-decoration: none;
+    color: #00b4f0;
+}
+
+.menu-username {
+    color: black;
+    display: inline-block;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.menu-li-left-block {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+}
+
+.li-del {
+    position: absolute;
+    right: 9px;
+}
+
+.li-accept {
+    position: absolute;
+    left: 9px;
+}
+
+.li-edit {
+    position: absolute;
+    left: 100px;
+}
+
+.li-text {
+    display: inline-block;
+    padding: 8px;
+}
+
+.ul-req {
+    padding: 0;
+    background: #f1f1f1;
+    font-family: Arial;
+}
+
+button {
+    color: white;
+    background: #92C157;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+button:hover {
+    background: white;
+    color: #92C157;
+}

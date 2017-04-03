@@ -1,8 +1,18 @@
-form {
-    border: 3px solid #f1f1f1;
-    font-family: Arial;
+body {
+    background-color: #f7f7f7;
 }
 
+form {
+    font-family: Arial;
+    text-align: center;
+    border: 1px solid #C8C8C8;
+    background: #ffffff;
+}
+
+input{
+    font-family: Arial;
+    font-weight: bold;
+}
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -10,18 +20,25 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    background-color: #ffffff;
+    color: black;
 }
 
 input[type=submit] {
-    background-color: #4CAF50;
+    background-color: #92C157;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
-    border-radius: 3px;
     font-weight: bold;
+    border-radius: 3px;
+}
+
+input[type=submit]:hover{
+    background-color: #77A04B;
+    color: #DEDEDE;
 }
 
 .container {
@@ -31,9 +48,9 @@ input[type=submit] {
 }
 
 .center-text {
+    color: black;
     text-align: center;
     font-family: Arial;
-    font-weight: bold;
 }
 
 .vertical-center {
@@ -44,8 +61,8 @@ input[type=submit] {
 }
 
 .error-text {
-    color: red;
+    color: #e85b47;
     text-align: center;
-    border: 1px solid red;
+    border: 1px solid #e85b47;
     border-radius: 4px;
 }
