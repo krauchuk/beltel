@@ -7,12 +7,14 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/js/select2.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/js/noty.packaged.min.js"/>"></script>
-    <link href="<c:url value="/css/dark/select2.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/select2.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/buttons.css"/> " rel="stylesheet">
 </head>
 <body>
 <div id="popup_page_content" style="visibility: hidden">
@@ -231,10 +233,10 @@
             <tr>
                 <td style="text-align: center" colspan="2">
                     <c:if test="${not empty data.name}">
-                        <a onclick="postData('${dataType}', 'edit')" style="cursor: pointer;">Сохранить</a>
+                        <a onclick="postData('${dataType}', 'edit')" class="save-pdf-settings-btn">Сохранить</a>
                     </c:if>
                     <c:if test="${empty data.name}">
-                        <a onclick="postData('${dataType}', 'add')" style="cursor: pointer;">Добавить</a>
+                        <a onclick="postData('${dataType}', 'add')" class="save-pdf-settings-btn">Добавить</a>
                     </c:if>
                 </td>
             </tr>
@@ -314,8 +316,39 @@
             timeout: 3000
         });
     }
-    function setOption(name, value) {
-        $("#select-sector-employer").append(new Option(name, value));
+    $("#select-division-employer").on("change", function () {
+        setSectorsByDivision();
+    });
+    function setSectorsByDivision() {
+        var selectDivisionId = $("select#select-division-employer").val();
+        $("#select-sector-employer").val(null).trigger('change.select2');
+        $("#select-sector-employer").select2({
+            dropdownAutoWidth: true,
+            width: "100%",
+            ajax: {
+                url: "admin/get_sectors/" + selectDivisionId,
+                dataType: "json",
+                type: "GET",
+                data: function (params) {
+
+                    var queryParameters = {
+                        term: params.term
+                    }
+                    return queryParameters;
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+            }
+        });
+        $("#select-sector-employer").val(0).trigger('change.select2');
     }
     $(document).ready(function () {
         $('textarea[maxlength]').keyup(function () {

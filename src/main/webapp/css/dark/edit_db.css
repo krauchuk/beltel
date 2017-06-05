@@ -7,6 +7,12 @@ select{
     border: 1px solid #ccc;
     outline: none;
 }
+
+.edit-db-select-line{
+    background-color: #2B2B2B;
+    padding: 3px;
+}
+
 input[type=submit]{
     color: white;
     background: #92C157;

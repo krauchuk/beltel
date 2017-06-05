@@ -13,4 +13,5 @@ public interface RepnoteResService {
     void deleteByNoticeId(long id);
     List<RepnoteRes> getBySubResourceId(long id);
     List<RepnoteRes> getByRegimeAccessId(long id);
+    void deleteByNoticeAndSubresId(long noticeId, long subresId);
 }

@@ -46,4 +46,8 @@ public class RepnoteResServiceImpl implements RepnoteResService{
     public List<RepnoteRes> getByRegimeAccessId(long id) {
         return service.getByRegimeAccessId(id);
     }
+
+    public void deleteByNoticeAndSubresId(long noticeId, long subresId) {
+        service.deleteByNoticeAndSubresId(noticeId, subresId);
+    }
 }

@@ -8,6 +8,7 @@
     request.setCharacterEncoding("UTF-8");
 %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+
 <html>
 <head>
     <link href="<c:url value="/css/light/menu.css" />" rel ="stylesheet">

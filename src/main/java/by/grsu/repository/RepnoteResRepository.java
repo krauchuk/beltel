@@ -23,4 +23,9 @@ public interface RepnoteResRepository extends JpaRepository<RepnoteRes, Long> {
     @Modifying
     @Transactional
     void deleteByNoticeId(@Param("id") long id);
+
+    @Query("DELETE FROM RepnoteRes r WHERE r.reportingNotice_id.id = :noticeId AND r.subResource_id.id = :subresId")
+    @Modifying
+    @Transactional
+    void deleteByNoticeAndSubresId(@Param("noticeId") long noticeId, @Param("subresId") long subresId);
 }

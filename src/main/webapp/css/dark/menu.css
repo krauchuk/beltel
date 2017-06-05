@@ -14,6 +14,40 @@ body{
     display: inline-block;
 }
 
+.menu-bottom-ul {
+    padding: 0;
+    background: #2B2B2B;
+    font-family: Arial;
+}
+
+.menu-a {
+    border-radius: 4px;
+    padding: 8px;
+    display: inline-block;
+    color: white;
+    background: #92C157;
+    text-decoration: none;
+}
+
+.menu-a:hover {
+    background: white;
+    text-decoration: none;
+    color: #92C157;
+}
+
+.menu-username {
+    color: #BABABA;
+    display: inline-block;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.menu-li-left-block {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+}
+
 a {
     border-radius: 4px;
     padding: 8px;
@@ -27,13 +61,6 @@ a:hover {
     background: white;
     text-decoration: none;
     color: #92C157;
-}
-
-.username {
-    color: #BABABA;
-    display: inline-block;
-    padding: 8px;
-    font-weight: bold;
 }
 
 .li-left {
@@ -54,44 +81,6 @@ a:hover {
     left: 100px;
 }
 
-
-.view-btn{
-    background: #313335;
-}
-.view-btn:hover{
-    background: white;
-    color: #313335;
-}
-.delete-btn{
-    background: #e85b47;
-    text-align: right;
-}
-.delete-btn:hover{
-    background: white;
-    color: #e85b47;
-}
-.accept-btn{
-    background: #92C157;
-}
-.accept-btn:hover{
-    background: white;
-    color: #92C157;
-}
-.unaccept-btn{
-    background: #CC7832;
-}
-.unaccept-btn:hover{
-    background: white;
-    color: #CC7832;
-}
-.edit-btn{
-    background: #3c3f41;
-}
-.edit-btn:hover{
-    background: white;
-    color: #3c3f41;
-}
-
 .li-text{
     display: inline-block;
     padding: 8px;
@@ -101,6 +90,7 @@ a:hover {
     background: #f1f1f1;
     font-family: Arial;
 }
+
 button{
     color: white;
     background: #92C157;
@@ -109,15 +99,8 @@ button{
     border-radius: 4px;
     padding: 4px;
 }
+
 button:hover{
     background: white;
     color: #92C157;
-}
-.close-btn{
-    background: #e85b47;
-    cursor: pointer;
-}
-.close-btn:hover{
-    background: white;
-    color: #e85b47;
 }

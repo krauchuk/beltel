@@ -5,6 +5,7 @@
 <%
     request.setCharacterEncoding("UTF-8");
 %>
+
 <html>
 <head>
     <link href="<c:url value="/css/light/login_page.css" />" rel="stylesheet">

@@ -49,7 +49,7 @@ public class Employer {
     @JoinColumn(name = "sector_id")
     private Sector sector_id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "division_id", nullable = false)
     private Division division_id;
 

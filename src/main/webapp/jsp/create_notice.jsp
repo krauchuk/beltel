@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <title>Новая заявка</title>
@@ -13,7 +14,7 @@
     <link href="<c:url value="/css/light/repnote.css"/> " rel="stylesheet">
     <link href="<c:url value="/css/light/edit_db.css" />" rel="stylesheet">
     <link href="<c:url value="/css/light/buttons.css" />" rel="stylesheet">
-    <link href="<c:url value="/css/dark/select2.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/select2.css"/> " rel="stylesheet">
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/js/select2.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/js/noty.packaged.min.js"/>"></script>

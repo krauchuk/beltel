@@ -1,0 +1,113 @@
+a{
+    padding: 8px;
+    display: inline-block;
+    text-decoration: none;
+}
+.view-btn {
+    border-radius: 4px;
+    color: white;
+    background: #313335;
+}
+
+.view-btn:hover {
+    background: white;
+    color: #313335;
+}
+
+.delete-btn {
+    border-radius: 2px;
+    color: white;
+    background: #e85b47;
+}
+
+.delete-btn:hover {
+    background: white;
+    color: #e85b47;
+}
+
+.accept-btn {
+    color: white;
+    background: #92C157;
+}
+
+.accept-btn:hover {
+    background: white;
+    color: #92C157;
+}
+
+.unaccept-btn {
+    color: white;
+    background: #CC7832;
+}
+
+.unaccept-btn:hover {
+    background: white;
+    color: #CC7832;
+}
+
+.edit-btn {
+    color: white;
+    background: #3c3f41;
+}
+
+.edit-btn:hover {
+    background: white;
+    color: #3c3f41;
+}
+
+.close-btn {
+    color: white;
+    background: #e85b47;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background: white;
+    color: #e85b47;
+}
+
+.refresh-table-btn{
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.add-data-btn{
+    margin-left: 5px;
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 2px;
+    color: white;
+    background: #92C157;
+}
+
+.add-data-btn:hover {
+    color: #92C157;
+    background: white;
+}
+
+.save-pdf-settings-btn{
+    border-radius: 2px;
+    cursor: pointer;
+    color: white;
+    background: #92C157;
+}
+
+.save-pdf-settings-btn:hover {
+    color: #92C157;
+    background: white;
+}
+
+.delete-resource-btn {
+    margin-left: 5px;
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 2px;
+    color: white;
+    background: #e85b47;
+}
+
+.delete-resource-btn:hover {
+    background: white;
+    color: #e85b47;
+}

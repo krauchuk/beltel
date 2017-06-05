@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -30,6 +31,9 @@ public class AdminController {
 
     @Autowired
     private ReportingNoticeServiceImpl reportingNoticeService;
+
+    @Autowired
+    private SectorServiceImpl sectorService;
 
     @RequestMapping(value = "/new_notices", method = RequestMethod.GET)
     public String newNotices(ModelMap modelMap) {
@@ -134,5 +138,11 @@ public class AdminController {
             e.printStackTrace();
         }
         return data;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/admin/get_sectors/{divisionId}", method = RequestMethod.GET)
+    public List<Sector> getSectorsByDivisionId(@PathVariable long divisionId){
+        return sectorService.getByDivisionId(divisionId);
     }
 }

@@ -3,8 +3,10 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <c:if test="${not empty reportingNotice}">
@@ -13,6 +15,10 @@
     <meta charset="utf-8">
     <link href="<c:url value="/css/light/repnote.css"/> " rel="stylesheet">
     <link href="<c:url value="/css/light/buttons.css"/> " rel="stylesheet">
+    <link href="<c:url value="/css/light/select2.css"/> " rel="stylesheet">
+    <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/js/select2.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/js/noty.packaged.min.js"/>"></script>
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
@@ -98,16 +104,61 @@
                 <th>Подресурс</th>
                 <th>Ресурс</th>
                 <th>Режим доступа</th>
+                <c:if test="${reportingNotice.status == false}">
+                    <th></th>
+                </c:if>
                 <c:forEach var="subres" items="${subres}">
                     <tr>
                         <td>${subres.subResource_id.name}</td>
                         <td>${subres.subResource_id.resource_id.name}</td>
                         <td>${subres.regimeAccess_id.name}</td>
+                        <c:if test="${reportingNotice.status == false}">
+                            <td><a class="delete-btn"
+                                   href="${path}/detele_${reportingNotice.id}_subres/${subres.id}">Удалить</a>
+                            </td>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </c:if>
         </table>
-
+        <c:if test="${reportingNotice.status == false}">
+            <table>
+                <th style="text-align: center" colspan="5">Добавить ресурс</th>
+                <tr>
+                    <form:form action="${path}/notice_add_subres/${reportingNotice.id}" method="post"
+                               modelAttribute="newSubres" id="newSubres-form">
+                        <td>Подресурс:</td>
+                        <td>
+                            <select class="select2" name="subResource_id.id">
+                                <option disabled selected hidden></option>
+                                <c:forEach var="resource" items="${resource}">
+                                    <optgroup label="${resource.name}">
+                                        <c:forEach var="subresource" items="${subresource}">
+                                            <c:if test="${resource.name == subresource.resource_id.name}">
+                                                <option value="${subresource.id}">${subresource.name}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                    </optgroup>
+                                </c:forEach>
+                            </select>
+                        </td>
+                        <td>Режим доступа:</td>
+                        <td>
+                            <select class="select2" name="regimeAccess_id.id">
+                                <option disabled selected hidden></option>
+                                <c:forEach var="regimeaccess" items="${regimeaccess}">
+                                    <option value="${regimeaccess.id}">${regimeaccess.name}</option>
+                                </c:forEach>
+                            </select>
+                        </td>
+                        <td>
+                            <a onmousedown="return false" onclick="sendRepnote()" class="add-data-btn">Добавить
+                                ресурс</a>
+                        </td>
+                    </form:form>
+                </tr>
+            </table>
+        </c:if>
         <table>
             <tr>
                 <td>
@@ -169,5 +220,42 @@
         </c:if>
     </sec:authorize>
 </c:if>
+<script>
+    select2Init();
+    function select2Init() {
+        $('.select2').select2({
+            dropdownAutoWidth: true,
+            width: "100%",
+            sorter: function (data) {
+                return data.sort(function (a, b) {
+                    return a.text < b.text ? -1 : a.text > b.text ? 1 : 0;
+                });
+            }
+        }).on("select2:select", function (e) {
+            $('.select2-selection__rendered li.select2-selection__choice').sort(function (a, b) {
+                return $(a).text() < $(b).text() ? -1 : $(a).text() > $(b).text() ? 1 : 0;
+            }).prependTo('.select2-selection__rendered');
+        });
+    }
+    function sendRepnote() {
+        var isNullable = false;
+        $('select').each(function () {
+            if ($(this).val() == null) {
+                isNullable = true;
+            }
+        });
+        if (!isNullable) {
+            document.getElementById("newSubres-form").submit();
+        } else {
+            var n = noty({
+                text: 'Заполните все поля',
+                layout: 'bottomRight',
+                theme: 'relax',
+                type: 'error',
+                timeout: 3000
+            });
+        }
+    }
+</script>
 </body>
 </html>

@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <script type="text/javascript" src="<c:url value ="/js/jquery-3.1.1.min.js"/>"></script>
