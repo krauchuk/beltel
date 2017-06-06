@@ -106,7 +106,15 @@ public class CreateReportController {
             infoTableC1_1.setUseAscender(true);
             infoTableC1_1.setVerticalAlignment(Element.ALIGN_MIDDLE);
             infoTableC1_1.setPadding(tablePadding);
-            PdfPCell infoTableC1_2 = new PdfPCell(new Phrase("*подразделение*", font));
+
+            String subdivision = "";
+            if(employer.getSector_id() != null){
+                subdivision = employer.getSector_id().getName() + "(" + employer.getDivision_id().getName() + ")";
+            }else{
+                subdivision = employer.getDivision_id().getName();
+            }
+
+            PdfPCell infoTableC1_2 = new PdfPCell(new Phrase(subdivision, font));
             infoTableC1_2.setUseAscender(true);
             infoTableC1_2.setVerticalAlignment(Element.ALIGN_MIDDLE);
             infoTableC1_2.setPadding(tablePadding);
