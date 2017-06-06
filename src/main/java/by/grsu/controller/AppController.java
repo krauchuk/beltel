@@ -35,6 +35,9 @@ public class AppController {
     @Autowired
     private RegimeAccessServiceImpl regimeAccessService;
 
+    @Autowired
+    private OperationsHistoryController operationsHistory;
+
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String homePage(HttpServletRequest request) {
         if (request.isUserInRole("ADMIN")) {
@@ -83,11 +86,14 @@ public class AppController {
     public String addSubresForNotice(@PathVariable long notice_id, @ModelAttribute("newSubres") RepnoteRes newSubres){
         newSubres.setReportingNotice_id(reportingNoticeService.getById(notice_id));
         repnoteResService.save(newSubres);
+        operationsHistory.saveOperation("Добавление подресурса " + subResourceService.getById(newSubres.getSubResource_id().getId()).getName() + " для заявки #" + notice_id);
         return "redirect:/notice/" + notice_id;
     }
 
     @RequestMapping(value = "/detele_{noticeId}_subres/{subresId}")
     public String deleteNoticeSubres(@PathVariable long noticeId, @PathVariable long subresId){
+        String subRes = repnoteResService.getById(subresId).getSubResource_id().getName();
+        operationsHistory.saveOperation("Удаление подресурса " + subRes + " заявки #" + noticeId);
         repnoteResService.delete(subresId);
         return "redirect:/notice/" + noticeId;
     }

@@ -20,6 +20,7 @@
         <li class="menu-li"><a href="${path}/all_notices" class="menu-a">Все заявки</a></li>
         <li class="menu-li"><a href="${path}/new_notices" class="menu-a">Новые заявки</a></li>
         <li class="menu-li"><a href="${path}/edit_db" class="menu-a">Редактирование БД</a></li>
+        <li class="menu-li"><a href="${path}/operations_history" class="menu-a">История операций</a></li>
         <li class="menu-li"><a href="${path}/pdf_settings" class="menu-a">Настройки PDF</a></li>
     </sec:authorize>
 

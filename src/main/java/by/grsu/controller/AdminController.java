@@ -35,6 +35,12 @@ public class AdminController {
     @Autowired
     private SectorServiceImpl sectorService;
 
+    @Autowired
+    private OperationsHistoryController operationsHistory;
+
+    @Autowired
+    private OperationsHistoryServiceImpl operationsHistoryService;
+
     @RequestMapping(value = "/new_notices", method = RequestMethod.GET)
     public String newNotices(ModelMap modelMap) {
         modelMap.addAttribute("mode", "new");
@@ -54,10 +60,22 @@ public class AdminController {
         return "edit_db";
     }
 
+    @RequestMapping(value = "/operations_history")
+    public String getOperationHistory(){
+        return "operations_history";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/admin/get_operations_history")
+    public List<OperationsHistory> getAllOperations(){
+        return operationsHistoryService.getAll();
+    }
+
     @RequestMapping(value = "/delete/{id}")
     public String deleteReportingNotice(@PathVariable long id) {
         repnoteResService.deleteByNoticeId(id);
         reportingNoticeService.delete(id);
+        operationsHistory.saveOperation("Удаление заявки #" + id);
         return "redirect:/all_notices";
     }
 
@@ -70,10 +88,12 @@ public class AdminController {
             reportingNotice.setDateDone(date);
             reportingNotice.setStatus(true);
             reportingNoticeService.save(reportingNotice);
+            operationsHistory.saveOperation("Одобрение заявки #" + id);
             return "redirect:/notice/" + id;
         }
         reportingNotice.setStatus(false);
         reportingNoticeService.save(reportingNotice);
+        operationsHistory.saveOperation("Отклонение заявки #" + id);
         return "redirect:/notice/" + id;
     }
 
@@ -119,6 +139,7 @@ public class AdminController {
         }catch (Exception e){
             modelMap.addAttribute("error", "exception");
         }
+        operationsHistory.saveOperation("Изменение настроек формирования PDF");
         return "redirect:/pdf_settings";
     }
 

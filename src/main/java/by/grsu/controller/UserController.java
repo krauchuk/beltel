@@ -40,6 +40,9 @@ public class UserController {
     @Autowired
     ResourceServiceImpl resourceService;
 
+    @Autowired
+    private OperationsHistoryController operationsHistory;
+
     @RequestMapping(value = "/user_notices", method = RequestMethod.GET)
     public String userRequest(ModelMap modelMap) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -102,6 +105,7 @@ public class UserController {
             );
             repnoteResService.save(repnoteRes);
         }
+        operationsHistory.saveOperation("Добавление заявки #" + reportingNotice.getId());
         return "redirect:/create_notice";
     }
 }

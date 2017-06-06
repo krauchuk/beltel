@@ -35,6 +35,9 @@ public class CreateReportController {
     @Autowired
     private RepnoteResServiceImpl repnoteResService;
 
+    @Autowired
+    private OperationsHistoryController operationsHistory;
+
     @RequestMapping(value = "/get_pdf/{id}")
     public void generatePdfFile(@PathVariable long id, HttpServletResponse response, HttpServletRequest request) {
         if (request.isUserInRole("USER")) {
@@ -311,5 +314,6 @@ public class CreateReportController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        operationsHistory.saveOperation("Сохранение отчета заявки #" + id);
     }
 }
